@@ -17,7 +17,7 @@ import java.sql.Statement;
 
 
 // Declaring a WebServlet called StarsServlet, which maps to url "/api/stars"
-@WebServlet(name = "StarsServlet", urlPatterns = "/api/stars")
+@WebServlet(name = "StarsServlet", urlPatterns = "/api/mystars")
 public class StarsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -48,7 +48,7 @@ public class StarsServlet extends HttpServlet {
             // Declare our statement
             Statement statement = conn.createStatement();
 
-            String query = "SELECT * from stars";
+            String query = "SELECT * from greatstars";
 
             // Perform the query
             ResultSet rs = statement.executeQuery(query);
@@ -64,7 +64,7 @@ public class StarsServlet extends HttpServlet {
                 // Create a JsonObject based on the data we retrieve from rs
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("star_id", star_id);
-                jsonObject.addProperty("star_name", star_name);
+                jsonObject.addProperty("starname", star_name);
                 jsonObject.addProperty("star_dob", star_dob);
 
                 jsonArray.add(jsonObject);
